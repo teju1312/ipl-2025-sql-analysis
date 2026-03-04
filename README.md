@@ -64,3 +64,20 @@ Window Functions
 ## 🎯 Project Goal
 
 To transform raw IPL ball-by-ball data into structured insights using SQL queries.
+
+## 🎯 Learning Outcomes
+
+Strengthened SQL query writing skills
+
+Improved understanding of relational databases
+
+Identified Match-related insights
+
+Determined top-performing players
+
+Analyzed ball-to-ball-deliveries patterns
+
+Developed ability to translate business questions into SQL queries
+
+Gained Hands-On Experience in Write in Queries for Analysis
+
