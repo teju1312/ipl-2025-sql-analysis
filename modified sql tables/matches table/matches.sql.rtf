@@ -1,0 +1,182 @@
+-- Database Creation
+create database IPL_2025;
+use IPL_2025;
+
+-- Tables Creation & imported data into it through 'Table Data Import Wizard' option
+-- 1.Matches Table 
+select * from matches;
+-- str - date format change 
+-- UPDATE matches
+-- SET date = STR_TO_DATE(date, '%M %d, %Y');
+
+alter table matches
+modify date DATE;
+-- Adding primary key constraint key to match_id
+-- 1.1 checking if that column contains duplicate values or not
+select match_id,count(*)
+from matches
+group by match_id
+having count(*) > 1;
+-- 1.2 checking if that column contains null values or not
+select * from matches
+where match_id is null;
+-- 1.3 making that column like it never contain nulls in future
+alter table matches
+modify column match_id int not null;
+-- 1.4 adding primary key
+alter table matches
+add constraint pk_matches
+primary key(match_id);
+
+
+-- insert missing rows manually which are missing during import.
+INSERT INTO matches (
+match_id,
+date,
+venue,
+team1,
+team2,
+stage,
+toss_winner,
+toss_decision,
+first_ings_score,
+first_ings_wkts,
+second_ings_score,
+second_ings_wkts,
+match_result,
+match_winner,
+wb_runs,
+wb_wickets,
+balls_left,
+player_of_the_match,
+top_scorer,
+highscore,
+best_bowling,
+best_bowling_figure
+)
+VALUES (
+44,
+'2025-04-26',              -- correct DATE format (YYYY-MM-DD)
+'Eden Gardens, Kolkata',
+'KKR',
+'PBKS',
+'League',
+'PBKS',
+'Bat',
+201,
+4,
+7,
+0,
+'Tied',
+NULL,
+NULL,
+NULL,
+114,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL
+);
+
+INSERT INTO matches (
+match_id,
+date,
+venue,
+team1,
+team2,
+stage,
+toss_winner,
+toss_decision,
+first_ings_score,
+first_ings_wkts,
+second_ings_score,
+second_ings_wkts,
+match_result,
+match_winner,
+wb_runs,
+wb_wickets,
+balls_left,
+player_of_the_match,
+top_scorer,
+highscore,
+best_bowling,
+best_bowling_figure
+)
+VALUES (
+55,
+'2025-05-05',
+'Rajiv Gandhi International Stadium, Hyderabad',
+'SRH',
+'DC',
+'League',
+'SRH',
+'Bowl',
+133,
+7,
+NULL,
+NULL,
+'Tied',
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL
+);
+
+INSERT INTO matches (
+match_id,
+date,
+venue,
+team1,
+team2,
+stage,
+toss_winner,
+toss_decision,
+first_ings_score,
+first_ings_wkts,
+second_ings_score,
+second_ings_wkts,
+match_result,
+match_winner,
+wb_runs,
+wb_wickets,
+balls_left,
+player_of_the_match,
+top_scorer,
+highscore,
+best_bowling,
+best_bowling_figure
+)
+VALUES (
+58,
+'2025-05-17',      -- correct date format
+'M. Chinnaswamy Stadium, Bangalore',
+'RCB',
+'KKR',
+'League',
+NULL,
+'Bowl',
+NULL,
+NULL,
+NULL,
+NULL,
+'tied',
+NULL,              -- if tied
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL
+);
+select * from matches;
+select count(distinct match_id) from matches;
+
+
